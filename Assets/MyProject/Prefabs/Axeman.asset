@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc962be5cf7080c49914389c69fa1a1d, type: 3}
+  m_Name: Axeman
+  m_EditorClassIdentifier: 
+  Weapon: {fileID: 11400000, guid: fe89040f7fa2c8d4298c9887d86770fd, type: 2}
+  StartHealth: 100
