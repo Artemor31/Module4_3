@@ -60,6 +60,8 @@ public class Attacker : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+        if (_weapon == null) return;
+
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _weapon.Range);
     }
