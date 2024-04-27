@@ -3,22 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class InventoryWindow : MonoBehaviour
+public class InventoryWindow : Window
 {
     [SerializeField] private Button _closeButton;
     [SerializeField] private List<SlotCell> _equipment;
     [SerializeField] private List<Cell> _inventory;
-    private Player _player;
+    private Inventory _playerInv;
 
-    private void Start()
+    public override void Construct(Player player)
     {
-        _player = FindObjectOfType<Player>();
+        base.Construct(player);
         _closeButton.onClick.AddListener(OnCloseClicked);
-        _player.Inventory.OnEquipmentChanged += OnEquipmentChanged;
-        _player.Inventory.OnInventoryChanged += OnInventoryChanged;
+        _playerInv = _player.Inventory;
 
-        OnEquipmentChanged(_player.Inventory.Equipment);
-        OnInventoryChanged(_player.Inventory.InventoryStash);
+        _playerInv.OnEquipmentChanged += OnEquipmentChanged;
+        _playerInv.OnInventoryChanged += OnInventoryChanged;
+        OnEquipmentChanged(_playerInv.Equipment);
+        OnInventoryChanged(_playerInv.InventoryStash);
+
+        foreach (Cell cell in _inventory)
+            cell.OnCellClicked += OnCellClicked;
+    }
+
+    private void OnCellClicked(Item item)
+    {
+        if (item == null) return;
+
+        if (item.Slot != Slot.None)
+        {
+            _playerInv.RemoveFromInventory(item);
+
+            if (_playerInv.TryUnequipItem(item.Slot, out var equip))
+            {
+                _playerInv.TryAddToInventory(equip);
+            }
+
+            _playerInv.TryEquipItem(item);
+        }
     }
 
     private void OnInventoryChanged(List<Item> items)
@@ -53,7 +74,14 @@ public class InventoryWindow : MonoBehaviour
 
     private void OnDestroy()
     {
+        if (_player == null) return;
+
         _closeButton.onClick.RemoveListener(OnCloseClicked);
+        _playerInv.OnEquipmentChanged -= OnEquipmentChanged;
+        _playerInv.OnInventoryChanged -= OnInventoryChanged;
+
+        foreach (Cell cell in _inventory)
+            cell.OnCellClicked -= OnCellClicked;
     }
 }
 

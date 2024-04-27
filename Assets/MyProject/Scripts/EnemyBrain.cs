@@ -6,16 +6,16 @@ public class EnemyBrain : MonoBehaviour
     [SerializeField] private Attacker _attacker;
     [SerializeField] private MeleeNavMeshMover _mover;
     [SerializeField] private Health _health;
-    [SerializeField] private Role _role;
     [SerializeField] private Loot _loot;
-
+    private EnemyData _data;
     private Player _player;
 
-    private void Start()
+    public void Construct(Player player, EnemyData data)
     {
-        _player = FindObjectOfType<Player>();
-        _attacker.SetWeapon(_role.Weapon);
-        _health.SetStartHealth(_role.StartHealth);
+        _data = data;
+        _player = player;
+        _attacker.SetWeapon(_data.Weapon);
+        _health.SetStartHealth(_data.StartHealth);
         _health.OnHealthChanged += OnHealthChanged;
     }
 
@@ -37,7 +37,7 @@ public class EnemyBrain : MonoBehaviour
     private void SpawnLoot()
     {
         var loot = Instantiate(_loot, transform.position, Quaternion.identity);
-        loot.Init(_role.Weapon);
+        loot.Init(_data.Loot.Random());
     }
 
     private void Update()

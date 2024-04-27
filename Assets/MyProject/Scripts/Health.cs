@@ -26,6 +26,8 @@ public class Health : MonoBehaviour
         if (_hitVFX != null)
             Instantiate(_hitVFX, transform.position + Vector3.up, Quaternion.identity, transform);
 
+        _animator.Play("Hited");
+
         CurrentHealth -= damage;
         OnHealthChanged?.Invoke(this);
 

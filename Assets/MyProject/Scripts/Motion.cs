@@ -1,13 +1,16 @@
-using System;
 using UnityEngine;
-using UnityEngine.Windows;
 
 public class Motion : MonoBehaviour
 {
     [SerializeField] private CharacterController _controller;
     [SerializeField] private Animator _animator;
     [SerializeField] private float _speed;
-    [SerializeField] private Camera _camera;
+    private Camera _camera;
+
+    public void Construct(Camera camera)
+    {
+        _camera = camera;
+    }
 
     public void Move(Vector3 motion)
     {

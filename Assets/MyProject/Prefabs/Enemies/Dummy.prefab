@@ -2246,7 +2246,6 @@ MonoBehaviour:
   _attacker: {fileID: 1391821068951890150}
   _mover: {fileID: 8528284406525514593}
   _health: {fileID: 4629279639156681293}
-  _role: {fileID: 11400000, guid: 379f1d3b6faa8bb43a2387f2eb6ae9f2, type: 2}
   _loot: {fileID: 5588029208176225116, guid: ea7dadbbfe69cf8439fd523df5fd8824, type: 3}
 --- !u!114 &4629279639156681293
 MonoBehaviour:

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -11,15 +12,26 @@ public class Player : MonoBehaviour
     [SerializeField] private LootPicker _lootPicker;
     private InputManager _input;
 
-    private void Awake()
+    public void Construct(Weapon weapon, float startHealth, Camera camera)
     {
         _input = new InputManager();
         Inventory = new Inventory();
 
-        _health.SetStartHealth(StaticData.PlayerRole.StartHealth);
-        _attacker.SetWeapon(StaticData.PlayerRole.Weapon);
-        Inventory.TryEquipItem(StaticData.PlayerRole.Weapon);
+        _mover.Construct(camera);
+        _health.SetStartHealth(startHealth);
+        _attacker.SetWeapon(weapon);
+        Inventory.TryEquipItem(weapon);
+
         _lootPicker.OnItemPicked += OnItemPicked;
+        Inventory.OnEquipmentChanged += OnEquipmentChanged;
+    }
+
+    private void OnEquipmentChanged(Dictionary<Slot, Item> equipment)
+    {
+        if (equipment.TryGetValue(Slot.Weapon, out var newWeapon) && newWeapon is Weapon weapon) 
+        {
+            _attacker.SetWeapon(weapon);
+        }        
     }
 
     private void OnItemPicked(Item item)

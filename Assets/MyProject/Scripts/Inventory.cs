@@ -34,16 +34,18 @@ public class Inventory
         }
     }
 
-    public Item UnequipItem(Slot slot)
+    public bool TryUnequipItem(Slot slot, out Item item)
     {
         if (Equipment.TryGetValue(slot, out var equip))
         {
             Equipment.Remove(slot);
             OnEquipmentChanged?.Invoke(Equipment);
-            return equip;            
+            item = equip;
+            return true;            
         }
 
-        return null;
+        item = null;
+        return false;
     }
 
     public bool TryAddToInventory(Item item)
@@ -56,5 +58,15 @@ public class Inventory
         _inventory.Add(item);
         OnInventoryChanged?.Invoke(InventoryStash);
         return true;
+    }
+
+    public Item RemoveFromInventory(Item item)
+    {
+        if (_inventory.Remove(item))
+        {
+            return item;
+        }
+
+        return null;
     }
 }

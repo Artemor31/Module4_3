@@ -11,12 +11,16 @@ public class Attacker : MonoBehaviour
 
     private Collider[] _hits = new Collider[3];
     private Weapon _weapon;
+    private GameObject _weaponInstance;
     private float _attackTime;
 
     public void SetWeapon(Weapon weapon)
     {
+        if (_weaponInstance != null)        
+            Destroy(_weaponInstance);        
+
         _weapon = weapon;
-        Instantiate(_weapon.Prefab, _hand);
+        _weaponInstance = Instantiate(_weapon.Prefab, _hand);
         ResetAttackTimer();
 
         if (weapon.Animator != null)
@@ -25,13 +29,17 @@ public class Attacker : MonoBehaviour
 
     void Update() => _attackTime -= Time.deltaTime;
 
+    public void AttackEvent()
+    {
+        AttackNearEnemies();
+    }
+
     public void Attack()
     {
         if (CanAttack)
         {
             AnimateAttack();
             ResetAttackTimer();
-            AttackNearEnemies();
         }
     }
 
