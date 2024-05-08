@@ -992,10 +992,10 @@ GameObject:
   - component: {fileID: 2922861734534516636}
   - component: {fileID: 4235620954047383682}
   - component: {fileID: 1805751843925782392}
-  - component: {fileID: 8385740690582626662}
   - component: {fileID: 5696242636062314952}
   - component: {fileID: 8641283155706336336}
   - component: {fileID: 9169285111714471596}
+  - component: {fileID: 63141018727227930}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -1083,24 +1083,6 @@ MonoBehaviour:
   _controller: {fileID: 4235620954047383682}
   _animator: {fileID: 2922861734534516636}
   _speed: 6
-  _camera: {fileID: 0}
---- !u!114 &8385740690582626662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019409464283705372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 589a77ee50047a244be2ba93244fd6b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _animator: {fileID: 2922861734534516636}
-  _damageMask:
-    serializedVersion: 2
-    m_Bits: 64
-  _hand: {fileID: 1557560093109936499}
 --- !u!114 &5696242636062314952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1127,7 +1109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e1cde0d6281095409ad10da1de835af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attacker: {fileID: 8385740690582626662}
+  _attacker: {fileID: 63141018727227930}
   _mover: {fileID: 1805751843925782392}
   _health: {fileID: 5696242636062314952}
   _lootPicker: {fileID: 9169285111714471596}
@@ -1143,6 +1125,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b27e83fe236292b4f9e5b9b3f6c077ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &63141018727227930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019409464283705372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82a7da7b041eaff43ba7c91719d6c21c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 2922861734534516636}
+  _damageMask:
+    serializedVersion: 2
+    m_Bits: 64
+  _handRight: {fileID: 1557560093109936499}
+  _handLeft: {fileID: 2082044839829304379}
 --- !u!1 &1083823134936528569
 GameObject:
   m_ObjectHideFlags: 0

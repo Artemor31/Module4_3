@@ -2110,7 +2110,7 @@ GameObject:
   - component: {fileID: 7365868739310454112}
   - component: {fileID: 4629279639156681293}
   - component: {fileID: 8528284406525514593}
-  - component: {fileID: 1391821068951890150}
+  - component: {fileID: 1113592431472800928}
   m_Layer: 6
   m_Name: Dummy
   m_TagString: Untagged
@@ -2243,7 +2243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bb275b0148cb1b43bac8f916e30e2fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attacker: {fileID: 1391821068951890150}
+  _attacker: {fileID: 1113592431472800928}
   _mover: {fileID: 8528284406525514593}
   _health: {fileID: 4629279639156681293}
   _loot: {fileID: 5588029208176225116, guid: ea7dadbbfe69cf8439fd523df5fd8824, type: 3}
@@ -2275,7 +2275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _agent: {fileID: 7767707191247053752}
   _animator: {fileID: 8934320512319004293}
---- !u!114 &1391821068951890150
+--- !u!114 &1113592431472800928
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2284,14 +2284,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 2275510281298593519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 589a77ee50047a244be2ba93244fd6b2, type: 3}
+  m_Script: {fileID: 11500000, guid: 82a7da7b041eaff43ba7c91719d6c21c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 8934320512319004293}
   _damageMask:
     serializedVersion: 2
     m_Bits: 128
-  _hand: {fileID: 8710862187083552615}
+  _handRight: {fileID: 8710862187083552615}
+  _handLeft: {fileID: 2932647010048109029}
 --- !u!1 &2376706145514974835
 GameObject:
   m_ObjectHideFlags: 0

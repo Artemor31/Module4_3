@@ -14,7 +14,11 @@ public class EnemyBrain : MonoBehaviour
     {
         _data = data;
         _player = player;
-        _attacker.SetWeapon(_data.Weapon);
+        _attacker.Construct(_data.Weapon);
+
+        if (_attacker is RangeAttacker rangeAttacker)
+            rangeAttacker.PickTarget(_player.transform);
+
         _health.SetStartHealth(_data.StartHealth);
         _health.OnHealthChanged += OnHealthChanged;
     }
@@ -23,11 +27,11 @@ public class EnemyBrain : MonoBehaviour
     {
         if (health.IsDead)
         {
-            StartCoroutine(Dessapear());
+            StartCoroutine(Disappear());
         }
     }
 
-    private IEnumerator Dessapear()
+    private IEnumerator Disappear()
     {
         yield return new WaitForSeconds(4);
         Destroy(gameObject);

@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
         _mover.Construct(camera);
         _health.SetStartHealth(startHealth);
-        _attacker.SetWeapon(weapon);
+        _attacker.Construct(weapon);
         Inventory.TryEquipItem(weapon);
 
         _lootPicker.OnItemPicked += OnItemPicked;
@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     {
         if (equipment.TryGetValue(Slot.Weapon, out var newWeapon) && newWeapon is Weapon weapon) 
         {
-            _attacker.SetWeapon(weapon);
+            _attacker.Construct(weapon);
         }        
     }
 

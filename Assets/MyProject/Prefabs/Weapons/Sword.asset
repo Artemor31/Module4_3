@@ -20,5 +20,6 @@ MonoBehaviour:
   <AttackCooldown>k__BackingField: 2
   <Damage>k__BackingField: 35
   <Range>k__BackingField: 2
+  <Hand>k__BackingField: 1
   <Animator>k__BackingField: {fileID: 22100000, guid: 192ba5aa1c0de5845b8d4243285e950d,
     type: 2}

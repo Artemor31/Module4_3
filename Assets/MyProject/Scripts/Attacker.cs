@@ -6,35 +6,33 @@ public class Attacker : MonoBehaviour
     public bool AttackProcessing => _weapon.AttackCooldown - _attackTime <= 1.2f;
 
     [SerializeField] private Animator _animator;
-    [SerializeField] private LayerMask _damageMask;
-    [SerializeField] private Transform _hand;
+    [SerializeField] protected LayerMask _damageMask;
+    [SerializeField] protected Transform _handRight;
+    [SerializeField] protected Transform _handLeft;
 
-    private Collider[] _hits = new Collider[3];
-    private Weapon _weapon;
+    protected Weapon _weapon;
     private GameObject _weaponInstance;
     private float _attackTime;
 
-    public void SetWeapon(Weapon weapon)
+    public virtual void Construct(Weapon weapon)
     {
         if (_weaponInstance != null)        
             Destroy(_weaponInstance);        
 
         _weapon = weapon;
-        _weaponInstance = Instantiate(_weapon.Prefab, _hand);
+        _weaponInstance = Instantiate(_weapon.Prefab, _weapon.Hand == Hand.Right ? _handRight : _handLeft);
         ResetAttackTimer();
 
         if (weapon.Animator != null)
             _animator.runtimeAnimatorController = weapon.Animator;
     }
 
-    void Update() => _attackTime -= Time.deltaTime;
+    private void Update() => _attackTime -= Time.deltaTime;
+    public bool InRange(Vector3 position) => Vector3.Distance(transform.position, position) <= _weapon.Range;
+    public void AttackEvent() => AttackOnEvent();
+    protected virtual void AttackOnEvent() { }
 
-    public void AttackEvent()
-    {
-        AttackNearEnemies();
-    }
-
-    public void Attack()
+    public virtual void Attack()
     {
         if (CanAttack)
         {
@@ -50,21 +48,7 @@ public class Attacker : MonoBehaviour
         _animator.SetTrigger("Attacking");
     }
 
-    public bool InRange(Vector3 position) => Vector3.Distance(transform.position, position) <= _weapon.Range;
     private void ResetAttackTimer() => _attackTime = _weapon.AttackCooldown;
-
-    private void AttackNearEnemies()
-    {
-        int count = Physics.OverlapSphereNonAlloc(transform.position, _weapon.Range, _hits, _damageMask);
-
-        for (int i = 0; i < count; i++)
-        {
-            if (_hits[i].TryGetComponent<Health>(out var health))
-            {
-                health.TakeDamage(_weapon.Damage);
-            }
-        }
-    }
 
     private void OnDrawGizmosSelected()
     {

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48691d04264383e48b3b9f4cefb4a23b, type: 3}
+  m_Name: Range
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 7798407525485791285, guid: 1c27d3daa62739d4385c8df61121401a, type: 3}
+  Weapon: {fileID: 11400000, guid: edc09c43188da2f4e86bec7bb2c56bfc, type: 2}
+  StartHealth: 80
+  Exp: 50
+  Gold: 50
+  Loot: []
