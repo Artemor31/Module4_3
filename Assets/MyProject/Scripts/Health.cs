@@ -13,10 +13,10 @@ public class Health : MonoBehaviour
     private float _maxHealth;
     private bool _isDead;
 
-    public void SetStartHealth(float startHealth)
+    public void Construct(float currentHealth, float startHealth)
     {
         _maxHealth = startHealth;
-        CurrentHealth = _maxHealth;
+        CurrentHealth = currentHealth;
     }
 
     public void TakeDamage(float damage)

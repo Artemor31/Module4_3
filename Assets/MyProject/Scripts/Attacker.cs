@@ -2,9 +2,6 @@ using UnityEngine;
 
 public class Attacker : MonoBehaviour
 {
-    private bool CanAttack => _attackTime <= 0;
-    public bool AttackProcessing => _weapon.AttackCooldown - _attackTime <= 1.2f;
-
     [SerializeField] private Animator _animator;
     [SerializeField] protected LayerMask _damageMask;
     [SerializeField] protected Transform _handRight;
@@ -28,13 +25,15 @@ public class Attacker : MonoBehaviour
     }
 
     private void Update() => _attackTime -= Time.deltaTime;
+    public bool AttackProcessing() => _animator.GetCurrentAnimatorStateInfo(0).IsTag("Attack");
+    public bool CanAttack() => _attackTime <= 0 && !AttackProcessing();
     public bool InRange(Vector3 position) => Vector3.Distance(transform.position, position) <= _weapon.Range;
     public void AttackEvent() => AttackOnEvent();
     protected virtual void AttackOnEvent() { }
 
     public virtual void Attack()
     {
-        if (CanAttack)
+        if (_attackTime <= 0)
         {
             AnimateAttack();
             ResetAttackTimer();

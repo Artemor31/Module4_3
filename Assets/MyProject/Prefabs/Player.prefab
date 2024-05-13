@@ -996,6 +996,7 @@ GameObject:
   - component: {fileID: 8641283155706336336}
   - component: {fileID: 9169285111714471596}
   - component: {fileID: 63141018727227930}
+  - component: {fileID: 2609545318488144936}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -1112,7 +1113,11 @@ MonoBehaviour:
   _attacker: {fileID: 63141018727227930}
   _mover: {fileID: 1805751843925782392}
   _health: {fileID: 5696242636062314952}
+  _caster: {fileID: 2609545318488144936}
   _lootPicker: {fileID: 9169285111714471596}
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &9169285111714471596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1143,6 +1148,21 @@ MonoBehaviour:
     m_Bits: 64
   _handRight: {fileID: 1557560093109936499}
   _handLeft: {fileID: 2082044839829304379}
+--- !u!114 &2609545318488144936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019409464283705372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 715a6e29b8158244aa744db2e7b85be0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 2922861734534516636}
+  _fireball: {fileID: 5413534747730261387, guid: ba0667b383a67d3428c8fd2e18cf45d6,
+    type: 3}
 --- !u!1 &1083823134936528569
 GameObject:
   m_ObjectHideFlags: 0

@@ -1323,7 +1323,7 @@ GameObject:
   - component: {fileID: 316340876}
   - component: {fileID: 316340875}
   - component: {fileID: 316340874}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3633,7 +3633,7 @@ Transform:
   m_GameObject: {fileID: 1015161816}
   serializedVersion: 2
   m_LocalRotation: {x: 0.46174863, y: 0, z: 0, w: 0.8870109}
-  m_LocalPosition: {x: -0.000000028925937, y: 8.035658, z: -4.6116605}
+  m_LocalPosition: {x: 41.14, y: 9.57, z: 30.24}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5062,8 +5062,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthFill: {fileID: 1290362386}
+  _expFill: {fileID: 1982039909}
   _inventory: {fileID: 1592986854}
   _inventoryButton: {fileID: 375183913}
+  _goldText: {fileID: 280902340}
 --- !u!1 &1678698054
 GameObject:
   m_ObjectHideFlags: 0
@@ -5741,7 +5743,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 618093248}
   - {fileID: 642761433}
-  - {fileID: 1015161820}
   - {fileID: 1678635696}
   - {fileID: 1592986858}
   - {fileID: 1543158255}
+  - {fileID: 1015161820}

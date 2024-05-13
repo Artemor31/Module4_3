@@ -40,7 +40,7 @@ public class MainMenu : MonoBehaviour
     private void StartClicked()
     {
         if (StaticData.PlayerRole == null) return;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     private void OnDisable()
